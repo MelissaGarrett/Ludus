@@ -9,10 +9,21 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var dataTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "dataSegue" {
+            let secondVC = segue.destination as? SecondViewController
+            if let svc = secondVC {
+                svc.data = dataTextField.text
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
